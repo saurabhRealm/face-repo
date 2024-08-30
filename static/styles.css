@@ -1,4 +1,44 @@
 /* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+.tp-header-area {
+  background: #000;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .container-1680 {
+    max-width: 100%;
+  }
+}
+
+/* Header Menu */
+.tp-header-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tp-header-menu ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.tp-header-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.tp-header-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Form Styles */
 .forms {
   max-width: 500px;
   margin: 50px auto;
@@ -45,6 +85,7 @@ form input[type="radio"] {
   margin-bottom: 20px;
   transition: background-color 0.3s;
 }
+
 #upload-area:hover {
   background-color: #e9ecef;
 }
@@ -69,202 +110,91 @@ form button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
 form button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-/* Style for the contact form container */
+/* Contact form container */
 .contactformclass {
-  background: rgb(219 215 215 / 20%);
+  background: rgba(219, 215, 215, 0.20);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(219, 215, 215, 0.30);
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-/* Padding for larger screens */
-.pt-130 {
-  padding-top: 177px;
+/* Custom Buttons */
+.tp-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
-/* FAQ form box styling */
-.tp-faq-form-box {
-  padding: 80px;
-  margin-left: 75px;
-  border-radius: 20px;
-  background-color: #384247;
+.tp-btn:hover {
+  background-color: #0056b3;
 }
 
-/* Hide the default checkbox */
-input[type="checkbox"] {
-  display: none;
+/* Offcanvas Menu */
+.tp-offcanvas-area {
+  background: #fff;
 }
 
-/* The switch container */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+.tp-offcanvas-content {
+  padding: 20px;
 }
 
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px;
+.tp-offcanvas-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* The slider before */
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 50%;
+.tp-offcanvas-menu ul li {
+  margin-bottom: 10px;
 }
 
-/* Checked state */
-input:checked + .slider {
-  background-color: #4caf50;
+.tp-offcanvas-menu ul li a {
+  color: #000;
+  text-decoration: none;
 }
 
-/* Move the slider to the right when checked */
-input:checked + .slider:before {
-  transform: translateX(26px);
+.tp-offcanvas-menu ul li a:hover {
+  text-decoration: underline;
 }
 
-/* Optional: Focus state (for accessibility) */
-input[type="checkbox"]:focus + .slider {
-  box-shadow: 0 0 1px #4caf50;
+.tp-offcanvas-contact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Base button styling */
-.tp-btn-blue {
-  background-color: #007bff; /* Blue background */
-  border: none; /* No border */
-  color: #ffffff; /* White text color */
-  padding: 12px 20px; /* Padding for size */
-  font-size: 16px; /* Font size */
-  font-weight: 600; /* Font weight for emphasis */
-  cursor: pointer; /* Pointer cursor on hover */
-  display: flex; /* Flexbox for icon alignment */
-  justify-content: center; /* Center the content */
-  align-items: center; /* Center the content vertically */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+.tp-offcanvas-contact ul li {
+  margin-bottom: 10px;
 }
 
-/* Button radius */
-.radius-6 {
-  border-radius: 6px;
+.tp-offcanvas-social ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Button width */
-.w-100 {
-  width: 100%;
+.tp-offcanvas-social ul li {
+  display: inline;
+  margin-right: 10px;
 }
 
-/* Icon inside the button */
-.button-icon {
-  margin-left: 8px; /* Space between text and icon */
-  display: inline-flex; /* Align icon inline */
+.tp-offcanvas-social ul li a {
+  color: #000;
+  text-decoration: none;
 }
 
-/* Hover effect */
-.tp-btn-blue:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  box-shadow: 0px 4px 15px rgba(0, 91, 187, 0.3); /* Subtle shadow */
-}
-
-/* Focus effect */
-.tp-btn-blue:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Custom focus outline */
-}
-
-/* Disable button styling */
-.tp-btn-blue:disabled {
-  background-color: #cccccc; /* Gray background */
-  cursor: not-allowed; /* Not-allowed cursor */
-  box-shadow: none; /* No shadow */
-}
-
-/* Additional styling for the error message */
-.ajax-response {
-  margin-top: 10px; /* Space above the message */
-  font-size: 14px; /* Smaller font size */
-  color: #dc3545; /* Bootstrap's danger color */
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-  .forms {
-    padding: 15px;
-  }
-
-  .tp-faq-form-box {
-    padding: 40px;
-    margin-left: 15px;
-  }
-
-  .tp-btn-blue {
-    font-size: 14px;
-  }
-
-  #upload-area {
-    height: 100px;
-  }
-}
-
-@media (max-width: 768px) {
-  .forms {
-    padding: 10px;
-    margin: 20px auto;
-  }
-
-  .tp-faq-form-box {
-    padding: 30px;
-    margin-left: 10px;
-  }
-
-  .tp-btn-blue {
-    padding: 10px;
-    font-size: 12px;
-  }
-
-  #upload-area {
-    height: 80px;
-  }
-}
-
-@media (max-width: 576px) {
-  .forms {
-    padding: 10px;
-    margin: 10px;
-  }
-
-  .tp-faq-form-box {
-    padding: 20px;
-    margin-left: 5px;
-  }
-
-  .tp-btn-blue {
-    padding: 8px;
-    font-size: 10px;
-  }
-
-  #upload-area {
-    height: 60px;
-  }
+.tp-offcanvas-social ul li a:hover {
+  color: #007bff;
 }

@@ -22,6 +22,15 @@ known_face_encodings = []
 known_face_names = []
 users = []
 
+def load_known_faces():
+    # Example: Load known faces from files and encode them
+    # known_image = face_recognition.load_image_file("path/to/known_face.jpg")
+    # known_face_encoding = face_recognition.face_encodings(known_image)[0]
+    # known_face_encodings.append(known_face_encoding)
+    # known_face_names.append("Name of Person")
+    pass
+
+load_known_faces()
 # Load known faces
 if os.path.exists('users.txt'):
     with open('users.txt', 'r') as f:
@@ -184,55 +193,48 @@ def view_users():
     
     return render_template('view_users.html', users=users)
 
+
 @app.route('/attendance', methods=['GET', 'POST'])
 def attendance():
     if request.method == 'POST':
-        image = request.files.get('image')
+        if 'image' not in request.files:
+            return jsonify(result="No image provided."), 400
 
-        if not image:
-            return render_template('attendance.html', result="No image provided!", error=True)
+        image_file = request.files['image']
 
-        filename = f"{uuid.uuid4().hex}.jpg"
-        image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        image.save(image_path)
+        if image_file and allowed_file(image_file.filename):
+            try:
+                # Read and process the uploaded image
+                image = Image.open(image_file.stream)
+                image_np = np.array(image)
+                
+                # Find all face encodings in the uploaded image
+                face_locations = face_recognition.face_locations(image_np)
+                face_encodings = face_recognition.face_encodings(image_np, face_locations)
+                
+                user_detected = False
+                for face_encoding in face_encodings:
+                    matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
+                    if True in matches:
+                        user_detected = True
+                        break
 
-        try:
-            uploaded_image = face_recognition.load_image_file(image_path)
-            encodings = face_recognition.face_encodings(uploaded_image)
-
-            if encodings:
-                encoding = encodings[0]
-                matches = face_recognition.compare_faces(known_face_encodings, encoding)
-                name = "Unknown"
-                if True in matches:
-                    first_match_index = matches.index(True)
-                    name = known_face_names[first_match_index]
-                    timestamp = pd.Timestamp.now()
-
-                    # Load existing attendance records
-                    if os.path.exists('attendance_records.xlsx'):
-                        df = pd.read_excel('attendance_records.xlsx')
-                    else:
-                        df = pd.DataFrame(columns=['User', 'Timestamp'])
-
-                    # Add new record
-                    new_record = pd.DataFrame({'User': [name], 'Timestamp': [timestamp]})
-                    df = pd.concat([df, new_record], ignore_index=True)
-                    df.to_excel('attendance_records.xlsx', index=False)
-
-                    result = f"Attendance marked for {name}."
+                if user_detected:
+                    return jsonify(result="User detected successfully.", success=True), 200
                 else:
-                    result = "No matching user found."
-            else:
-                result = "No face detected in the image."
+                    return jsonify(result="User not detected.", success=False), 404
+                
+            except Exception as e:
+                print(f"Error processing image: {e}")
+                return jsonify(result="Error processing image."), 500
 
-        except Exception as e:
-            result = f"Error processing image: {str(e)}"
-            print(f"Error: {e}")
+            return jsonify(result="Invalid image.", success=False), 404
 
-        return render_template('attendance.html', result=result)
-
+    # Render the attendance page for GET requests
     return render_template('attendance.html')
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ['jpg', 'jpeg', 'png']
 
 @app.route('/export_attendance')
 def export_attendance():

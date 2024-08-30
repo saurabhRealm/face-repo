@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% block title %}Mark Attendance{% endblock %} {%
-block content %}
+{% extends 'base.html' %}
+{% block title %}Mark Attendance{% endblock %}
+{% block content %}
 
 <!-- Attendance area start -->
 <div class="tp-faq-area pt-130">
   <div class="container">
     <div class="row align-items-end">
-      <div class="col-xl-7 col-lg-7 w-100">
+      <div class="col-12">
         <div class="tp-faq-form-box">
           <div class="tp-faq-form-wrap">
             <div class="tp-faq-form-content mb-45">
@@ -13,7 +14,7 @@ block content %}
 
               <!-- Live Video Feed -->
               <div class="video-feed">
-                <video id="video" width="640" height="480" autoplay></video>
+                <video id="video" width="100%" height="auto" autoplay></video>
                 <p id="camera-error" style="color: red; display: none">
                   Camera not detected. Please check your camera or try a
                   different browser.
@@ -22,16 +23,15 @@ block content %}
 
               <button
                 id="capture-btn"
-                class="tp-btn-border-paste height-50 text-center w-100 mt-4"
+                class="tp-btn border-0 text-center w-100 mt-4"
               >
                 Capture Image from Live Feed
               </button>
 
-              <p class="mt-3">Or</p>
-            </div>
+              <p class="mt-3 text-center">Or</p>
 
-            <!-- Form to upload image -->
-            <form
+              <!-- Form to upload image -->
+              <form
               id="upload-form"
               action="{{ url_for('attendance') }}"
               method="post"
@@ -39,13 +39,25 @@ block content %}
             >
               <label for="image">Upload Image for Attendance:</label>
               <input type="file" id="image" name="image" accept="image/*" />
+
+                <!-- Result message area -->
+    <div class="row">
+      <div class="col-12 mt-4">
+        <div id="result-message" class="tp-faq-form-content">
+          No results to display.
+        </div>
+      </div>
+    </div>
               <button
-                type="submit"
+                type="button"
+                id="upload-btn"
                 class="tp-btn-border-paste height-50 text-center w-100 mt-4"
               >
                 Submit
               </button>
             </form>
+            
+            </div>
           </div>
         </div>
       </div>
@@ -54,45 +66,46 @@ block content %}
 </div>
 <!-- Attendance area end -->
 
-{% if result %}
-<p>{{ result }}</p>
-{% endif %}
-
-<!-- JavaScript to handle camera access -->
 <script>
   async function startCamera() {
     const video = document.getElementById("video");
     const cameraError = document.getElementById("camera-error");
 
     try {
-      // Request access to the webcam
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      video.srcObject = stream;
-
-      // Hide the error message if the camera is accessible
-      cameraError.style.display = "none";
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        cameraError.style.display = "none";
     } catch (error) {
-      // Show error message if camera access is denied or no camera is found
-      video.style.display = "none";
-      cameraError.style.display = "block";
+        console.error("Camera access error:", error);
+        video.style.display = "none";
+        cameraError.style.display = "block";
     }
-  }
+}
 
-  document.addEventListener("DOMContentLoaded", function () {
+function showResultMessage(message, isSuccess) {
+    const resultMessage = document.getElementById("result-message");
+    resultMessage.textContent = message;
+    resultMessage.className = isSuccess ? 'success' : 'error';
+    resultMessage.style.display = 'block';
+    
+    // Hide the result message after 10 seconds
+    setTimeout(() => {
+        resultMessage.style.display = 'none';
+    }, 10000);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
     startCamera();
 
-    document
-      .getElementById("capture-btn")
-      .addEventListener("click", function (e) {
+    document.getElementById("capture-btn").addEventListener("click", function (e) {
         e.preventDefault();
         const video = document.getElementById("video");
 
         if (!video.srcObject) {
-          alert("No video feed available.");
-          return;
+            showResultMessage("No video feed available.", false);
+            return;
         }
 
-        // Create a canvas to draw the video frame
         const canvas = document.createElement("canvas");
         canvas.width = video.width;
         canvas.height = video.height;
@@ -100,27 +113,55 @@ block content %}
         const context = canvas.getContext("2d");
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        // Convert the canvas to an image (Blob) and send it to the server
         canvas.toBlob(function (blob) {
-          const formData = new FormData();
-          formData.append("image", blob, "captured.jpg");
+            const formData = new FormData();
+            formData.append("image", blob, "captured.jpg");
 
-          // Submit the captured image to the attendance route
-          fetch('{{ url_for("attendance") }}', {
+            fetch('{{ url_for("attendance") }}', {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Fetch data:", data);
+                if (data) {
+                    showResultMessage(data.result, data.success);
+                } else {
+                    showResultMessage("Unexpected response format.", false);
+                }
+            })
+            .catch(error => {
+                console.error("Error in fetch:", error);
+                showResultMessage("Error occurred while processing the image.", false);
+            });
+        }, "image/jpeg");
+    });
+
+    document.getElementById("upload-btn").addEventListener("click", function (e) {
+        e.preventDefault();
+        const form = document.getElementById("upload-form");
+        const formData = new FormData(form);
+
+        fetch('{{ url_for("attendance") }}', {
             method: "POST",
             body: formData,
-          })
-            .then((response) => response.text())
-            .then((data) => {
-              // Update the result area with the server response
-              document
-                .querySelector(".tp-faq-area")
-                .insertAdjacentHTML("beforeend", `<p>${data}</p>`);
-            })
-            .catch((error) => console.error("Error:", error));
-        }, "image/jpeg");
-      });
-  });
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Fetch data:", data);
+            if (data) {
+                showResultMessage(data.result, data.success);
+            } else {
+                showResultMessage("Unexpected response format.", false);
+            }
+        })
+        .catch(error => {
+            console.error("Error in fetch:", error);
+            showResultMessage("Error occurred while uploading the image.", false);
+        });
+    });
+});
 </script>
 
 {% endblock %}
+y

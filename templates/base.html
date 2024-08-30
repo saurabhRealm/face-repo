@@ -28,6 +28,7 @@
   </head>
 
   <body class="z-index-1 black-bg">
+
     <header>
       <div
         id="header-sticky"
@@ -46,6 +47,10 @@
               <div class="tp-header-menu header-main-menu">
                 <nav class="tp-mobile-menu-active">
                   <ul>
+
+       <li>
+                      <a href="https://super-adventure-g45gpx5g4g973pvrp-5000.app.github.dev/">Home</a>
+                    </li>
                     <li>
                       <a href="{{ url_for('home') }}">Home</a>
                     </li>
@@ -333,6 +338,11 @@
         </div>
       </div>
     </header>
+    {% if success_message %}
+    <div class="success-message">
+        {{ success_message }}
+    </div>
+{% endif %}
     <div class="tp-border-line-wrap">
       <div class="tp-border-line"></div>
       <div class="tp-border-line line-2"></div>

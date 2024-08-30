@@ -1,8 +1,8 @@
+/* General Styles */
 .forms {
   max-width: 500px;
   margin: 50px auto;
   padding: 20px;
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.18);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -10,12 +10,15 @@
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* Form label */
 form label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
   color: #333;
 }
+
 /* Style for input fields */
 form input[type="file"],
 form input[type="radio"] {
@@ -26,6 +29,7 @@ form input[type="radio"] {
   font-size: 16px;
   box-sizing: border-box;
 }
+
 /* Style for the file upload area */
 #upload-area {
   display: flex;
@@ -65,12 +69,12 @@ form button[type="submit"] {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 form button[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+/* Style for the contact form container */
 .contactformclass {
-  /* From https://css.glass */
   background: rgb(219 215 215 / 20%);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -78,15 +82,20 @@ form button[type="submit"]:hover {
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
+/* Padding for larger screens */
 .pt-130 {
   padding-top: 177px;
 }
+
+/* FAQ form box styling */
 .tp-faq-form-box {
   padding: 80px;
   margin-left: 75px;
   border-radius: 20px;
   background-color: #384247;
 }
+
 /* Hide the default checkbox */
 input[type="checkbox"] {
   display: none;
@@ -196,4 +205,66 @@ input[type="checkbox"]:focus + .slider {
   margin-top: 10px; /* Space above the message */
   font-size: 14px; /* Smaller font size */
   color: #dc3545; /* Bootstrap's danger color */
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .forms {
+    padding: 15px;
+  }
+
+  .tp-faq-form-box {
+    padding: 40px;
+    margin-left: 15px;
+  }
+
+  .tp-btn-blue {
+    font-size: 14px;
+  }
+
+  #upload-area {
+    height: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .forms {
+    padding: 10px;
+    margin: 20px auto;
+  }
+
+  .tp-faq-form-box {
+    padding: 30px;
+    margin-left: 10px;
+  }
+
+  .tp-btn-blue {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  #upload-area {
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .forms {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .tp-faq-form-box {
+    padding: 20px;
+    margin-left: 5px;
+  }
+
+  .tp-btn-blue {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  #upload-area {
+    height: 60px;
+  }
 }

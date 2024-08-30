@@ -1,10 +1,14 @@
 import os
 import uuid
+import re
+import base64
 import cv2
 import face_recognition
 import numpy as np
 import pandas as pd
-from flask import Flask, request, render_template, redirect, url_for, Response, send_file
+from flask import Flask, request, render_template, redirect, url_for, Response, send_file, session, jsonify
+from PIL import Image
+from io import BytesIO
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -59,18 +63,34 @@ def gen_frames():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    success_message = session.pop('success_message', None)
+    return render_template('home.html', success_message=success_message)
+
 
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+def save_image_from_camera(image_path):
+    cap = cv2.VideoCapture(0)
+    if not cap.isOpened():
+        raise RuntimeError("Could not open camera. Please check if the camera is connected and accessible.")
+    
+    ret, frame = cap.read()
+    if not ret:
+        cap.release()
+        raise RuntimeError("Failed to capture image. Please try again.")
+    
+    cv2.imwrite(image_path, frame)
+    cap.release()
+    cv2.destroyAllWindows()
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         name = request.form.get('name')
         image = request.files.get('image')
-        capture = request.form.get('capture')
+        capture_image_data = request.form.get('camera_image_data')
         errors = {}
 
         # Validation for name
@@ -78,22 +98,28 @@ def register():
             errors['name'] = "Name is required!"
 
         # Validation for image or capture
-        if not image and not capture:
+        if not image and not capture_image_data:
             errors['image'] = "You must upload an image or capture one!"
 
         if errors:
             return render_template('register.html', errors=errors)
+
+        filename = None
 
         # If there's an image, save it
         if image:
             filename = f"{uuid.uuid4().hex}.jpg"
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             image.save(image_path)
-        elif capture:
+        elif capture_image_data:
             filename = f"{uuid.uuid4().hex}.jpg"
             image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            # Uncomment and implement the following function if capturing from camera
-            # save_image_from_camera(image_path)
+
+            # Decode and save the captured image
+            image_data = re.sub('^data:image/jpeg;base64,', '', capture_image_data)
+            image_data = base64.b64decode(image_data)
+            image = Image.open(BytesIO(image_data))
+            image.save(image_path)
 
         # Save user data to a file
         with open('users.txt', 'a') as f:
@@ -107,14 +133,13 @@ def register():
             known_face_encodings.append(encoding)
             known_face_names.append(name)
         
+        # Set success message in session
+        session['success_message'] = 'Registration successful! Redirecting to home...'
         return redirect(url_for('home'))
 
     return render_template('register.html')
-
-
 @app.route('/view_users', methods=['GET', 'POST'])
 def view_users():
-    users = []
     if os.path.exists('users.txt'):
         with open('users.txt', 'r') as f:
             users = [line.strip().split(',') for line in f]

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Home Page</h1>
+    <ul>
+        <li><a href="{{ url_for('register') }}">Register New User</a></li>
+        <li><a href="{{ url_for('show_users') }}">Show Users</a></li>
+        <li><a href="{{ url_for('find_user') }}">Find User By Image</a></li>
+        <li><a href="{{ url_for('video_feed') }}" target="_blank">Open Live Camera Feed</a></li>
+    </ul>
+</body>
+</html>

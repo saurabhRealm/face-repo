@@ -1,0 +1,510 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content
+%}
+
+<!-- service area start -->
+<div class="tp-service-area pt-110 z-index-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-6 col-lg-10">
+        <div class="tp-service-left p-relative">
+          <div class="tp-service-shape">
+            <img
+              src="static/assets/img/home-01/shape/service-shape-1.png"
+              alt=""
+            />
+          </div>
+          <div class="tp-service-title-box mb-40">
+            <h4 class="tp-section-title tp_reveal_anim">
+              Welcome <br />
+              to the Face Recognition Attendance System
+            </h4>
+          </div>
+          <div class="tp-service-btn-box">
+            <div class="tp-service-btn">
+              <a class="tp-btn-border sm" href="about.html">
+                Read More
+                <span>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 9L9 1"
+                      stroke="currentcolor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M1 1H9V9"
+                      stroke="currentcolor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="tp-service-right mt-50">
+          <div class="row">
+            <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 tp_fade_anim">
+              <div class="tp-service-item mb-70">
+                <span class="tp-service-icon">
+                  <svg
+                    width="30"
+                    height="32"
+                    viewBox="0 0 30 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M5.625 22.2909V9.97587C7.56 9.48087 9 7.72587 9 5.64087C9 3.15087 6.99 1.14087 4.5 1.14087C2.01 1.14087 0 3.15087 0 5.64087C0 7.74087 1.44 9.48087 3.375 9.97587V22.2909C1.44 22.7859 0 24.5409 0 26.6259C0 29.1159 2.01 31.1259 4.5 31.1259C6.99 31.1259 9 29.1159 9 26.6259C9 24.5259 7.56 22.7859 5.625 22.2909Z"
+                      fill="currentcolor"
+                    ></path>
+                    <path
+                      d="M26.625 22.291V7.87599C26.625 5.59599 24.78 3.75099 22.5 3.75099H18.105L20.22 1.996C20.7 1.591 20.76 0.886001 20.37 0.406001C19.965 -0.073999 19.26 -0.134008 18.78 0.255992L14.28 4.00599C14.025 4.21599 13.875 4.53099 13.875 4.87599C13.875 5.22099 14.025 5.521 14.28 5.746L18.78 9.496C18.99 9.676 19.245 9.75099 19.5 9.75099C19.815 9.75099 20.145 9.61599 20.37 9.34599C20.775 8.86599 20.7 8.16099 20.22 7.75599L18.105 6.00099H22.5C23.535 6.00099 24.375 6.84099 24.375 7.87599V22.291C22.44 22.786 21 24.541 21 26.626C21 29.116 23.01 31.126 25.5 31.126C27.99 31.126 30 29.116 30 26.626C30 24.526 28.56 22.786 26.625 22.291Z"
+                      fill="currentcolor"
+                    ></path>
+                  </svg>
+                </span>
+                <h4 class="tp-service-title">
+                  <a class="tp-line-white" href="{{ url_for('register') }}"
+                    >Register <br />
+                    User</a
+                  >
+                </h4>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 tp_fade_anim">
+              <div class="tp-service-item mb-70">
+                <span class="tp-service-icon">
+                  <svg
+                    width="30"
+                    height="29"
+                    viewBox="0 0 30 29"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M0 15.4706V12.8319C0 11.2727 1.27436 9.98336 2.84858 9.98336C5.56222 9.98336 6.67166 8.06432 5.30735 5.7105C4.52774 4.36117 4.9925 2.60705 6.35682 1.82744L8.95052 0.34318C10.1349 -0.361467 11.6642 0.0583229 12.3688 1.24273L12.5337 1.52759C13.8831 3.88141 16.1019 3.88141 17.4663 1.52759L17.6312 1.24273C18.3358 0.0583229 19.8651 -0.361467 21.0495 0.34318L23.6432 1.82744C25.0075 2.60705 25.4723 4.36117 24.6927 5.7105C23.3283 8.06432 24.4378 9.98336 27.1514 9.98336C28.7106 9.98336 30 11.2577 30 12.8319V15.4706C30 17.0298 28.7256 18.3192 27.1514 18.3192C24.4378 18.3192 23.3283 20.2382 24.6927 22.5921C25.4723 23.9564 25.0075 25.6955 23.6432 26.4751L21.0495 27.9594C19.8651 28.664 18.3358 28.2442 17.6312 27.0598L17.4663 26.775C16.1169 24.4211 13.8981 24.4211 12.5337 26.775L12.3688 27.0598C11.6642 28.2442 10.1349 28.664 8.95052 27.9594L6.35682 26.4751C4.9925 25.6955 4.52774 23.9414 5.30735 22.5921C6.67166 20.2382 5.56222 18.3192 2.84858 18.3192C1.27436 18.3192 0 17.0298 0 15.4706Z"
+                      fill="currentcolor"
+                    ></path>
+                    <path
+                      d="M14.9926 19.0237C17.6836 19.0237 19.8651 16.8422 19.8651 14.1511C19.8651 11.4601 17.6836 9.27856 14.9926 9.27856C12.3015 9.27856 10.12 11.4601 10.12 14.1511C10.12 16.8422 12.3015 19.0237 14.9926 19.0237Z"
+                      fill="currentcolor"
+                    ></path>
+                  </svg>
+                </span>
+                <h4 class="tp-service-title">
+                  <a class="tp-line-white" href="{{ url_for('view_users') }}"
+                    >View <br />
+                    Users</a
+                  >
+                </h4>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 tp_fade_anim">
+              <div class="tp-service-item mb-70">
+                <span class="tp-service-icon">
+                  <svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 30 30"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      opacity="0.4"
+                      d="M29.5304 21.9763L25.005 11.393C24.1809 9.45563 22.952 8.35682 21.5496 8.28453C20.1616 8.21224 18.817 9.18093 17.7905 11.0316L15.0435 15.9617C14.4651 17.0027 13.641 17.6244 12.7446 17.6967C11.8338 17.7835 10.9229 17.3063 10.1856 16.3666L9.86749 15.9617C8.84097 14.675 7.56867 14.0533 6.26744 14.1834C4.96622 14.3135 3.85295 15.2099 3.11559 16.6702L0.614355 21.6582C-0.282043 23.4655 -0.195295 25.5619 0.860141 27.2679C1.91558 28.974 3.75175 30.0005 5.76141 30.0005H24.2099C26.1472 30.0005 27.9545 29.0318 29.0244 27.4125C30.1232 25.7932 30.2967 23.7546 29.5304 21.9763Z"
+                      fill="currentcolor"
+                    ></path>
+                    <path
+                      d="M7.77109 9.77363C10.47 9.77363 12.6579 7.58573 12.6579 4.88681C12.6579 2.1879 10.47 0 7.77109 0C5.07218 0 2.88428 2.1879 2.88428 4.88681C2.88428 7.58573 5.07218 9.77363 7.77109 9.77363Z"
+                      fill="currentcolor"
+                    ></path>
+                  </svg>
+                </span>
+                <h4 class="tp-service-title">
+                  <a class="tp-line-white" href="{{ url_for('attendance') }}"
+                    >CHeck <br />
+                    Attendanceg</a
+                  >
+                </h4>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-4 col-md-4 col-sm-6 tp_fade_anim">
+              <div class="tp-service-item mb-70">
+                <span class="tp-service-icon">
+                  <svg
+                    width="28"
+                    height="29"
+                    viewBox="0 0 28 29"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M24.6718 4.18915L16.1923 0.412403C14.9478 -0.137468 13.0667 -0.137468 11.8222 0.412403L3.34264 4.18915C1.20104 5.14419 0.88269 6.44651 0.88269 7.14109C0.88269 7.83566 1.20104 9.13799 3.34264 10.093L11.8222 13.8698C12.4444 14.1447 13.2258 14.2894 14.0072 14.2894C14.7886 14.2894 15.57 14.1447 16.1923 13.8698L24.6718 10.093C26.8134 9.13799 27.1318 7.83566 27.1318 7.14109C27.1318 6.44651 26.8279 5.14419 24.6718 4.18915Z"
+                      fill="currentcolor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M14.0072 21.7705C13.4574 21.7705 12.9075 21.6547 12.401 21.4377L2.64806 17.0966C1.15762 16.431 0 14.6511 0 13.016C0 12.4227 0.477519 11.9452 1.0708 11.9452C1.66408 11.9452 2.1416 12.4227 2.1416 13.016C2.1416 13.7974 2.79276 14.8103 3.51628 15.1287L13.2693 19.4697C13.7323 19.6723 14.2677 19.6723 14.7307 19.4697L24.4837 15.1287C25.2072 14.8103 25.8584 13.8119 25.8584 13.016C25.8584 12.4227 26.3359 11.9452 26.9292 11.9452C27.5225 11.9452 28 12.4227 28 13.016C28 14.6367 26.8424 16.431 25.3519 17.0966L15.599 21.4377C15.107 21.6547 14.5571 21.7705 14.0072 21.7705Z"
+                      fill="currentcolor"
+                    ></path>
+                    <path
+                      opacity="0.4"
+                      d="M14.0072 28.9476C13.4574 28.9476 12.9075 28.8319 12.401 28.6148L2.64806 24.2737C1.04186 23.5647 0 21.9585 0 20.1931C0 19.5998 0.477519 19.1223 1.0708 19.1223C1.66408 19.1223 2.1416 19.5998 2.1416 20.1931C2.1416 21.1047 2.677 21.9295 3.51628 22.3058L13.2693 26.6469C13.7323 26.8494 14.2677 26.8494 14.7307 26.6469L24.4837 22.3058C25.3085 21.944 25.8584 21.1047 25.8584 20.1931C25.8584 19.5998 26.3359 19.1223 26.9292 19.1223C27.5225 19.1223 28 19.5998 28 20.1931C28 21.9585 26.9581 23.5502 25.3519 24.2737L15.599 28.6148C15.107 28.8319 14.5571 28.9476 14.0072 28.9476Z"
+                      fill="currentcolor"
+                    ></path>
+                  </svg>
+                </span>
+                <h4 class="tp-service-title">
+                  <a
+                    class="tp-line-white"
+                    href="{{ url_for('export_attendance') }}"
+                    >Export <br />
+                    Attendance Data</a
+                  >
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- service area end -->
+
+<!-- goal area start -->
+<div class="tp-goal-area pt-85 pb-90">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-5 col-lg-5">
+        <div class="tp-goal-left p-relative">
+          <div class="tp-goal-thumb">
+            <img
+              class="w-100"
+              src="static/assets/img/home-01/goal/goal.jpeg"
+              alt=""
+            />
+          </div>
+          <div class="tp-goal-shape">
+            <img
+              src="static/assets/img/home-01/shape/goal-shape-1.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-7 col-lg-7">
+        <div class="tp-goal-right">
+          <div class="tp-goal-right-thumb mb-40">
+            <img src="static/assets/img/home-01/goal/goal3.jpeg" alt="" />
+          </div>
+          <div class="tp-goal-content">
+            <div class="tp-goal-title-box mb-20">
+              <span class="tp-section-subtitle mb-10">Our Goal</span>
+              <h4 class="tp-section-title tp_reveal_anim">
+                Manage and track attendance efficiently using face recognition
+                technology..
+              </h4>
+            </div>
+            <div class="tp-goal-text mb-65 tp_fade_anim">
+              <p>
+                Whether it's on a website, an app, or a search engine, this
+                simple phrase can evoke a mix of emotions from confusion to
+                exasperation. But fear not, for in these moments, there are
+                strategies and solutions that can help you find your way.
+              </p>
+            </div>
+            <div class="tp-goal-list">
+              <ul>
+                <li class="tp_fade_anim">
+                  <span>
+                    <span>
+                      <i></i>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M11.4303 12.9975H2.40034C0.580337 12.9975 -0.579665 11.0475 0.300335 9.44752L2.63034 5.2075L4.81034 1.2375C5.72034 -0.4125 8.10033 -0.4125 9.01033 1.2375L11.2003 5.2075L12.2503 7.11751L13.5303 9.44752C14.4103 11.0475 13.2503 12.9975 11.4303 12.9975Z"
+                          fill="currentcolor"
+                        ></path>
+                        <path
+                          opacity="0.4"
+                          d="M20.0004 13.4976C20.0004 17.0876 17.0904 19.9976 13.5004 19.9976C9.91037 19.9976 7.00037 17.0876 7.00037 13.4976C7.00037 13.3276 7.01037 13.1676 7.02037 12.9976H11.4304C13.2504 12.9976 14.4104 11.0476 13.5304 9.44757L12.2504 7.11755C12.6504 7.03755 13.0704 6.99756 13.5004 6.99756C17.0904 6.99756 20.0004 9.90756 20.0004 13.4976Z"
+                          fill="currentcolor"
+                        ></path>
+                      </svg>
+                    </span>
+                  </span>
+                  <p>Improve SEO Ranking</p>
+                </li>
+                <li class="tp_fade_anim">
+                  <span>
+                    <span>
+                      <i></i>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M11.4303 12.9975H2.40034C0.580337 12.9975 -0.579665 11.0475 0.300335 9.44752L2.63034 5.2075L4.81034 1.2375C5.72034 -0.4125 8.10033 -0.4125 9.01033 1.2375L11.2003 5.2075L12.2503 7.11751L13.5303 9.44752C14.4103 11.0475 13.2503 12.9975 11.4303 12.9975Z"
+                          fill="currentcolor"
+                        ></path>
+                        <path
+                          opacity="0.4"
+                          d="M20.0004 13.4976C20.0004 17.0876 17.0904 19.9976 13.5004 19.9976C9.91037 19.9976 7.00037 17.0876 7.00037 13.4976C7.00037 13.3276 7.01037 13.1676 7.02037 12.9976H11.4304C13.2504 12.9976 14.4104 11.0476 13.5304 9.44757L12.2504 7.11755C12.6504 7.03755 13.0704 6.99756 13.5004 6.99756C17.0904 6.99756 20.0004 9.90756 20.0004 13.4976Z"
+                          fill="currentcolor"
+                        ></path>
+                      </svg>
+                    </span>
+                  </span>
+                  <p>Search Engine Optimization</p>
+                </li>
+                <li class="tp_fade_anim">
+                  <span>
+                    <span>
+                      <i></i>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M11.4303 12.9975H2.40034C0.580337 12.9975 -0.579665 11.0475 0.300335 9.44752L2.63034 5.2075L4.81034 1.2375C5.72034 -0.4125 8.10033 -0.4125 9.01033 1.2375L11.2003 5.2075L12.2503 7.11751L13.5303 9.44752C14.4103 11.0475 13.2503 12.9975 11.4303 12.9975Z"
+                          fill="currentcolor"
+                        ></path>
+                        <path
+                          opacity="0.4"
+                          d="M20.0004 13.4976C20.0004 17.0876 17.0904 19.9976 13.5004 19.9976C9.91037 19.9976 7.00037 17.0876 7.00037 13.4976C7.00037 13.3276 7.01037 13.1676 7.02037 12.9976H11.4304C13.2504 12.9976 14.4104 11.0476 13.5304 9.44757L12.2504 7.11755C12.6504 7.03755 13.0704 6.99756 13.5004 6.99756C17.0904 6.99756 20.0004 9.90756 20.0004 13.4976Z"
+                          fill="currentcolor"
+                        ></path>
+                      </svg>
+                    </span>
+                  </span>
+                  <p>Market Research</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- goal area end -->
+
+<!-- skill area start -->
+<div class="tp-skill-area pt-130">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-xl-6">
+        <div class="tp-skill-wrap">
+          <div class="tp-skill-title-box mb-35">
+            <span class="tp-section-subtitle mb-10">Our expertise</span>
+            <h4 class="tp-section-title mb-30 tp_reveal_anim">
+              Your expertise and experience in business growth
+            </h4>
+            <p class="tp_fade_anim">
+              We will help you identify your target market, develop a marketing
+              plan, and grow your customer base.
+            </p>
+          </div>
+          <div class="tp-skill-mail tp_fade_anim">
+            <a href="mailto:tryesy@gmail.com">
+              <span>
+                <svg
+                  width="20"
+                  height="17"
+                  viewBox="0 0 20 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    opacity="0.3"
+                    d="M15 17H5C2 17 0 15.5 0 12V5C0 1.5 2 0 5 0H15C18 0 20 1.5 20 5V12C20 15.5 18 17 15 17Z"
+                    fill="currentcolor"
+                  ></path>
+                  <path
+                    d="M10 9.36997C9.16002 9.36997 8.31003 9.10997 7.66003 8.57997L4.53002 6.07997C4.21002 5.81997 4.15003 5.34997 4.41003 5.02997C4.67003 4.70997 5.14003 4.64997 5.46003 4.90997L8.59002 7.40997C9.35002 8.01997 10.64 8.01997 11.4 7.40997L14.53 4.90997C14.85 4.64997 15.33 4.69997 15.58 5.02997C15.84 5.34997 15.79 5.82997 15.46 6.07997L12.33 8.57997C11.69 9.10997 10.84 9.36997 10 9.36997Z"
+                    fill="currentcolor"
+                  ></path>
+                </svg>
+              </span>
+              <i>tryesy@gmail.com</i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6">
+        <div class="tp-progress-bar-wrap">
+          <div class="tp-progress-bar-item">
+            <div class="tp-progress-bar-title d-flex justify-content-between">
+              <label>UX Design</label>
+              <span>75%</span>
+            </div>
+            <div class="tp-progress-bar">
+              <div class="progress">
+                <div
+                  class="progress-bar wow slideInLeft"
+                  data-wow-delay=".1s"
+                  data-wow-duration="2s"
+                  role="progressbar"
+                  data-width="75%"
+                  aria-valuenow="75"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="tp-progress-bar-item">
+            <div class="tp-progress-bar-title d-flex justify-content-between">
+              <label>API Development</label>
+              <span>82%</span>
+            </div>
+            <div class="tp-progress-bar">
+              <div class="progress">
+                <div
+                  class="progress-bar wow slideInLeft"
+                  data-wow-delay=".1s"
+                  data-wow-duration="2s"
+                  role="progressbar"
+                  data-width="82%"
+                  aria-valuenow="82"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="tp-progress-bar-item">
+            <div class="tp-progress-bar-title d-flex justify-content-between">
+              <label>Email Marketing</label>
+              <span>64%</span>
+            </div>
+            <div class="tp-progress-bar">
+              <div class="progress">
+                <div
+                  class="progress-bar wow slideInLeft"
+                  data-wow-delay=".1s"
+                  data-wow-duration="2s"
+                  role="progressbar"
+                  data-width="64%"
+                  aria-valuenow="64"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="tp-progress-bar-item">
+            <div class="tp-progress-bar-title d-flex justify-content-between">
+              <label>React Development</label>
+              <span>72%</span>
+            </div>
+            <div class="tp-progress-bar">
+              <div class="progress">
+                <div
+                  class="progress-bar wow slideInLeft"
+                  data-wow-delay=".1s"
+                  data-wow-duration="2s"
+                  role="progressbar"
+                  data-width="72%"
+                  aria-valuenow="72"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- skill area end -->
+
+<!-- funfact area start -->
+<div class="tp-funfact-area pt-160 pb-80">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-50">
+        <div class="tp-funfact-item">
+          <h4 class="tp-funfact-number">
+            <span
+              data-purecounter-duration="1"
+              data-purecounter-end="45"
+              class="purecounter"
+              >45</span
+            >+
+          </h4>
+          <span>Realized Projects</span>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-50">
+        <div class="tp-funfact-item">
+          <h4 class="tp-funfact-number">
+            <span
+              data-purecounter-duration="1"
+              data-purecounter-end="16"
+              class="purecounter"
+              >16</span
+            >+
+          </h4>
+          <span>Years experiences</span>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-50">
+        <div class="tp-funfact-item">
+          <h4 class="tp-funfact-number">
+            <span
+              data-purecounter-duration="1"
+              data-purecounter-end="96"
+              class="purecounter"
+              >96</span
+            >+
+          </h4>
+          <span>Happy customers</span>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-50">
+        <div class="tp-funfact-item">
+          <h4 class="tp-funfact-number">
+            <span
+              data-purecounter-duration="1"
+              data-purecounter-end="14"
+              class="purecounter"
+              >14</span
+            >+
+          </h4>
+          <span>trusted partners</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- funfact area end -->
+
+{% endblock %}

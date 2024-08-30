@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Camera</title>
+</head>
+<body>
+    <h1>Capture Image from Camera</h1>
+    <p>Click the button to start capturing:</p>
+    <form action="{{ url_for('capture') }}" method="get">
+        <button type="submit">Capture Image</button>
+    </form>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

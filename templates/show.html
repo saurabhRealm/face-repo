@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show User</title>
+</head>
+<body>
+    <h1>Mark Attendance</h1>
+    <form action="{{ url_for('show') }}" method="post" enctype="multipart/form-data">
+        <label for="image">Upload Image:</label>
+        <input type="file" name="image" id="image" required>
+        <button type="submit">Check User</button>
+    </form>
+    {% if name %}
+        <h2>User Details</h2>
+        <p>Name: {{ name }}</p>
+        <img src="{{ url_for('static', filename=image_path) }}" alt="User Image">
+        <p>Attendance recorded.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find User By Image</title>
+</head>
+<body>
+    <h1>Find User By Image</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+        <input type="submit" value="Find User">
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+        {% if image_path %}
+            <img src="{{ image_path }}" alt="User Image" width="300">
+        {% endif %}
+    {% endif %}
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

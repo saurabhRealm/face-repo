@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}View Users{% endblock %}
+
+{% block content %}
+    <h2>Registered Users</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td><img src="{{ url_for('static', filename='uploads/' + user[1]) }}" alt="User Image" width="100"></td>
+                    <td>
+                        <form action="{{ url_for('view_users') }}" method="post" style="display:inline;">
+                            <input type="hidden" name="delete_user" value="{{ user[0] }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

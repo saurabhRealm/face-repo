@@ -21,6 +21,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 known_face_encodings = []
 known_face_names = []
 users = []
+user_details = []
 
 def load_known_faces():
     # Example: Load known faces from files and encode them
